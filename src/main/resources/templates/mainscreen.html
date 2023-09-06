@@ -19,15 +19,6 @@
     <h1>VVNAZ MARTIAL ARTS SHOP</h1>
     <hr>
     <h2>Parts</h2> <!--added parts-->
-    <ul>
-        <li>Belts</li>
-        <li>Tops</li>
-        <li>Pants</li>
-        <li>Helmets</li>
-        <li>Chest Gear</li>
-        <li>Bo Staff</li>
-        <li>Nun Chucks</li>
-    </ul>
 
     <form th:action="@{/mainscreen}">
         Filter: <input type="text" name="partkeyword" id="partkeyword" size="50" th:value="${partkeyword}" required />
@@ -47,6 +38,7 @@
             <th>Inventory</th>
             <th>Action</th>
         </tr>
+
         </thead>
         <tbody>
         <tr th:each="tempPart : ${parts}">
@@ -57,15 +49,17 @@
                 <a th:href="@{/deletepart(partID=${tempPart.id})}" class="btn btn-primary btn-sm mb-3"
                    onclick="if(!(confirm('Are you sure you want to delete this part?')))return false">Delete</a>
             </td>
-        </tr>
+        <tr><td>Belts</td></tr>
+        <tr><td>Tops</td></tr>
+        <tr><td>Pants</td></tr>
+        <tr><td>Helmets</td></tr>
+        <tr><td>Chest Gear</td></tr>
+        <tr><td>Bo Staff</td></tr>
+        <tr><td>Nun Chucks</td></tr>
+
         </tbody>
     </table>
     <h2>Products</h2><!-- added products-->
-    <ul>
-        <li>Uniforms</li>
-        <li>Fighting Gear</li>
-        <li>Weapons</li>
-    </ul>
 
     <form th:action="@{/mainscreen}">
         Filter: <input type="text" name="productkeyword" id="productkeyword" size="50" th:value="${productkeyword}" required />
@@ -90,6 +84,11 @@
             <th>Action</th>
         </tr>
         </thead>
+        <tr><td>Uniforms</td> </tr>
+        <tr><td>Fighting Gear</td></tr>
+        <tr><td>Weapons</td></tr>
+        <tr><td>Awards</td></tr>
+        <tr><td>First Aide</td></tr>
         <tbody>
         <tr th:each="tempProduct : ${products}">
             <td th:text="${tempProduct.name}">1</td>
