@@ -4,4 +4,5 @@ Customize the HTML user interface. Changes were made to the given mainscreen.htm
 Part D 
 I created the new about.html page and linked it to the mainscreen.html and put a link on the mainscreen.html page to navigate to the about us page. 
 
-Part E
+Part E Added 5 products from line 92 - 96, save those products from line 97-101
+Created 5 new OutsourcedPart objects from line 43 - 68. Saved those from libe 70-74. I used the given code that was commented out to have those new parts and products put onto the webpage.
