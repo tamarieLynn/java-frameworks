@@ -87,8 +87,6 @@ public class BootStrapData implements CommandLineRunner {
             System.out.println(part.getName()+" "+part.getCompanyName());
         }
 
-
-//below works fine dont forget to uncomment
         Product uniforms = new Product("Uniform", 50.0, 20);
         Product fightingGear = new Product("Fighting Gear", 50.0, 20);
         Product weapons = new Product("weapons", 20.0, 20);
