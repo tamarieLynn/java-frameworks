@@ -1,17 +1,11 @@
 package com.example.demo.controllers;
 
-import com.example.demo.domain.Part;
 import com.example.demo.domain.Product;
-import com.example.demo.repositories.PartRepository;
 import com.example.demo.repositories.ProductRepository;
-import com.example.demo.service.PartService;
-import com.example.demo.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @Controller
@@ -33,16 +27,23 @@ public class ProductController {
         }
     }
 
-    @PostMapping("/purchase")
-    public String purchaseProduct(@ModelAttribute Product product, Model model) {
-        // Check inventory and perform the purchase logic
-        if (product.getInv() > 0) {
-            // Reduce the inventory
-            product.setInv(product.getInv() - 1);
+    @PostMapping("/buyProduct")
+    public String buyProduct(
+            @RequestParam("productId") Long productId,
+            Model model
+    ) {
+        // Retrieve the product by its ID from the database
+        Product product = productRepository.findById(productId).orElse(null);
+
+        if (product != null && product.getInv() > 0) {
+            // Perform purchase logic, update inventory, etc.
+            // Redirect to a purchase confirmation page
+            product.setInv(product.getInv()- 1);
             productRepository.save(product);
-            return "purchase-confirmation"; // Redirect to a confirmation page
+            return "purchase-confirmation";
         } else {
-            return "purchase-failure"; // Redirect to a "purchase failure" page
+            // Redirect to a purchase failure page
+            return "purchase-failure";
         }
     }
 }
