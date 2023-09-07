@@ -67,6 +67,8 @@ public class BootStrapData implements CommandLineRunner {
         o5.setPrice(20.0);
         o5.setId(104L);
 
+ // save only when outsourced part == 0
+
         outsourcedPartRepository.save(o);
         outsourcedPartRepository.save(o2);
         outsourcedPartRepository.save(o3);
@@ -92,11 +94,22 @@ public class BootStrapData implements CommandLineRunner {
         Product weapons = new Product("weapons", 20.0, 20);
         Product awards = new Product("Awards", 5.0, 100);
         Product firstAide = new Product("First Aide", 20.0, 50);
-        productRepository.save(uniforms);
-        productRepository.save(fightingGear);
-        productRepository.save(weapons);
-        productRepository.save(awards);
-        productRepository.save(firstAide);
+
+        if (!productRepository.findByName("Uniform")) {
+            productRepository.save(uniforms);
+        }
+        if (!productRepository.findByName("Fighting Gear")) {
+            productRepository.save(fightingGear);
+        }
+        if (!productRepository.findByName("Weapons")) {
+            productRepository.save(weapons);
+        }
+        if (!productRepository.findByName("Awards")){
+            productRepository.save(awards);
+        }
+        if (!productRepository.findByName("First Aide")) {
+            productRepository.save(firstAide);
+        }
 
 
         System.out.println("Started in Bootstrap");

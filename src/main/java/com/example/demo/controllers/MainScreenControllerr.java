@@ -46,7 +46,7 @@ public class MainScreenControllerr {
         List<Part> partList=partService.listAll(partkeyword);
         theModel.addAttribute("parts",partList);
         theModel.addAttribute("partkeyword",partkeyword);
-    //    theModel.addAttribute("products",productService.findAll());
+        theModel.addAttribute("products",productService.findAll()); // this was commented out
         List<Product> productList=productService.listAll(productkeyword);
         theModel.addAttribute("products", productList);
         theModel.addAttribute("productkeyword",productkeyword);
