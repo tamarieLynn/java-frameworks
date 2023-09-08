@@ -19,7 +19,7 @@ import java.util.Set;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="part_type",discriminatorType = DiscriminatorType.INTEGER)
 @Table(name="Parts")
-public abstract class Part implements Serializable {
+public class Part implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     long id;
@@ -29,9 +29,10 @@ public abstract class Part implements Serializable {
     @Min(value = 0, message = "Inventory value must be positive")
     int inv;
 
+
     @Min(value = 0, message = "Inventory cannot be less ...")
     int minInv;
-    @Min(value = 0, "Inventory cannot exceed...")
+    @Min(value = 0, message = "Inventory cannot exceed...")
     int maxInv;
 
     @ManyToMany
@@ -54,7 +55,16 @@ public abstract class Part implements Serializable {
         this.price = price;
         this.inv = inv;
     }
-    public Part(String name, double price, int inv, int maxInv, int minInv) {
+//    public Part(String name, double price, int inv, int maxInv, int minInv) {
+//        this.name = name;
+//        this.price = price;
+//        this.inv = inv;
+//        this.minInv = minInv;
+//        this.maxInv = maxInv;
+//    }
+
+    public Part(String name, int inv, double price, long id, int maxInv, int minInv) {
+        this.id = id;
         this.name = name;
         this.price = price;
         this.inv = inv;

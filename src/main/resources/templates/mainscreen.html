@@ -50,13 +50,13 @@
                    onclick="if(!(confirm('Are you sure you want to delete this part?')))return false">Delete</a>
             </td>
 
-        <tr><td>Belts</td></tr>
-        <tr><td>Tops</td></tr>
-        <tr><td>Pants</td></tr>
-        <tr><td>Helmets</td></tr>
-        <tr><td>Chest Gear</td></tr>
-        <tr><td>Bo Staff</td></tr>
-        <tr><td>Nun Chucks</td></tr>
+<!--        <tr><td>Belts</td></tr>-->
+<!--        <tr><td>Tops</td></tr>-->
+<!--        <tr><td>Pants</td></tr>-->
+<!--        <tr><td>Helmets</td></tr>-->
+<!--        <tr><td>Chest Gear</td></tr>-->
+<!--        <tr><td>Bo Staff</td></tr>-->
+<!--        <tr><td>Nun Chucks</td></tr>-->
 
         </tbody>
     </table>
@@ -85,11 +85,11 @@
             <th>Action</th>
         </tr>
         </thead>
-        <tr><td>Uniforms</td> </tr>
-        <tr><td>Fighting Gear</td></tr>
-        <tr><td>Weapons</td></tr>
-        <tr><td>Awards</td></tr>
-        <tr><td>First Aide</td></tr>
+<!--        <tr><td>Uniforms</td> </tr>-->
+<!--        <tr><td>Fighting Gear</td></tr>-->
+<!--        <tr><td>Weapons</td></tr>-->
+<!--        <tr><td>Awards</td></tr>-->
+<!--        <tr><td>First Aide</td></tr>-->
         <tbody>
         <tr th:each="tempProduct : ${products}">
             <td th:text="${tempProduct.name}">1</td>
@@ -98,7 +98,6 @@
             <td><a th:href="@{/showProductFormForUpdate(productID=${tempProduct.id})}" class="btn btn-primary btn-sm mb-3">Update</a>
                 <a th:href="@{/deleteproduct(productID=${tempProduct.id})}" class="btn btn-primary btn-sm mb-3"
                    onclick="if(!(confirm('Are you sure you want to delete this product?')))return false">Delete</a>
-             <!-- fixme change the functionality of this button-->
 
 
                 <form th:action="@{/buyProduct}" method="post">
@@ -107,7 +106,7 @@
 
                     <!-- Check inventory and display Buy Now button -->
                     <input type="submit" value="Buy Now" th:if="${tempProduct.inv > 0}" />
-                    <p th:unless="${tempProduct.inv > 0}">Sorry, this product is out of stock.</p>
+                    <p th:unless="${tempProduct.inv > 0}">Sorry, this product is out of stock.</p><!--fixme-->
                 </form>
 
 

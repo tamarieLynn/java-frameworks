@@ -62,7 +62,7 @@ public class BootStrapData implements CommandLineRunner {
         o5.setPrice(20.0);
         o5.setId(104L);
 
- // save only when outsourced part == 0
+        // save only when outsourced part == 0
 
         outsourcedPartRepository.save(o);
         outsourcedPartRepository.save(o2);
