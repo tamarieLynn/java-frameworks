@@ -41,34 +41,44 @@ public class BootStrapData implements CommandLineRunner {
         o.setInv(5);
         o.setPrice(20.0);
         o.setId(100L);
+        o.setMinInv(1);
+        o.setMaxInv(100);
         OutsourcedPart o2= new OutsourcedPart();
         o2.setName("Tops");
         o2.setInv(5);
         o2.setPrice(20.0);
         o2.setId(101L);
+        o2.setMinInv(1);
+        o2.setMaxInv(100);
         OutsourcedPart o3= new OutsourcedPart();
         o3.setName("Pants");
         o3.setInv(5);
         o3.setPrice(20.0);
         o3.setId(102L);
+        o3.setMinInv(1);
+        o3.setMaxInv(100);
         OutsourcedPart o4= new OutsourcedPart();
         o4.setName("Helmets");
         o4.setInv(5);
         o4.setPrice(20.0);
         o4.setId(103L);
+        o4.setMinInv(1);
+        o4.setMaxInv(100);
         OutsourcedPart o5= new OutsourcedPart();
         o5.setName("Chest Gear");
         o5.setInv(5);
         o5.setPrice(20.0);
         o5.setId(104L);
+        o5.setMinInv(1);
+        o5.setMaxInv(100);
 
         // save only when outsourced part == 0
 
-        outsourcedPartRepository.save(o);
-        outsourcedPartRepository.save(o2);
-        outsourcedPartRepository.save(o3);
-        outsourcedPartRepository.save(o4);
-        outsourcedPartRepository.save(o5);
+//        outsourcedPartRepository.save(o);
+//        outsourcedPartRepository.save(o2);
+//        outsourcedPartRepository.save(o3);
+//        outsourcedPartRepository.save(o4);
+//        outsourcedPartRepository.save(o5);
 
         OutsourcedPart thePart = null;
         List<OutsourcedPart> outsourcedParts=(List<OutsourcedPart>) outsourcedPartRepository.findAll();

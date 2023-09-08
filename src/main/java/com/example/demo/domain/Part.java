@@ -3,6 +3,7 @@ package com.example.demo.domain;
 import com.example.demo.validators.ValidDeletePart;
 
 import javax.persistence.*;
+import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.Min;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -28,8 +29,6 @@ public class Part implements Serializable {
     double price;
     @Min(value = 0, message = "Inventory value must be positive")
     int inv;
-
-
     @Min(value = 0, message = "Inventory cannot be less ...")
     int minInv;
     @Min(value = 0, message = "Inventory cannot exceed...")
@@ -55,13 +54,6 @@ public class Part implements Serializable {
         this.price = price;
         this.inv = inv;
     }
-//    public Part(String name, double price, int inv, int maxInv, int minInv) {
-//        this.name = name;
-//        this.price = price;
-//        this.inv = inv;
-//        this.minInv = minInv;
-//        this.maxInv = maxInv;
-//    }
 
     public Part(String name, int inv, double price, long id, int maxInv, int minInv) {
         this.id = id;
@@ -123,6 +115,15 @@ public class Part implements Serializable {
     public String toString(){
         return this.name;
     }
+
+    
+
+    @AssertTrue(message = "Inventory must be within the specified range")
+    public boolean isInventoryInRange() {
+        return inv >= minInv && inv <= maxInv;
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
