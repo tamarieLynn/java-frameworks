@@ -1,8 +1,10 @@
 package com.example.demo.domain;
 
+import com.example.demo.validators.Inventorycheck;
 import com.example.demo.validators.ValidDeletePart;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -28,11 +30,17 @@ public class Part implements Serializable {
     String name;
     @Min(value = 0, message = "Price value must be positive")
     double price;
-    @Min(value = 0, message = "Inventory value must be positive")
-    int inv;
-    @Min(value = 0, message = "Inventory cannot be less ...")
+//    @Min(value = 0, message = "Inventory value must be positive")
+//    @Max(value = 110, message = "Inventory cannot exceed...")
+//    int inv;
+@Inventorycheck(message = "Inventory value must be between minInv and maxInv")
+int inv;
+
+    //@Min(value = 0, message = "Inventory cannot be less ...")
+    @Inventorycheck(message = "Inventory value must be between minInv and maxInv")
     int minInv;
-    @Max(value = 110, message = "Inventory cannot exceed...")
+    //@Max(value = 110, message = "Inventory cannot exceed...")
+    @Inventorycheck(message = "Inventory value must be between minInv and maxInv")
     int maxInv;
 
     @ManyToMany
