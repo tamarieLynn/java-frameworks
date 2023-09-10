@@ -36,19 +36,46 @@ public class AddInhousePartController{
         return "InhousePartForm";
     }
 
+//    @PostMapping("/showFormAddInPart")
+//    public String submitForm(@Valid @ModelAttribute("inhousepart") InhousePart part, BindingResult theBindingResult, Model theModel){
+//        theModel.addAttribute("inhousepart",part);
+//        if(theBindingResult.hasErrors()){
+//            return "InhousePartForm";
+//        }
+//        else{
+//        InhousePartService repo=context.getBean(InhousePartServiceImpl.class);
+//        InhousePart ip=repo.findById((int)part.getId());
+//        if(ip!=null)part.setProducts(ip.getProducts());
+//            repo.save(part);
+//
+//        return "confirmationaddpart";}
+//    }
     @PostMapping("/showFormAddInPart")
-    public String submitForm(@Valid @ModelAttribute("inhousepart") InhousePart part, BindingResult theBindingResult, Model theModel){
-        theModel.addAttribute("inhousepart",part);
-        if(theBindingResult.hasErrors()){
+    public String submitForm(@Valid @ModelAttribute("inhousepart") InhousePart part, BindingResult theBindingResult, Model theModel) {
+        if (theBindingResult.hasErrors()) {
             return "InhousePartForm";
-        }
-        else{
-        InhousePartService repo=context.getBean(InhousePartServiceImpl.class);
-        InhousePart ip=repo.findById((int)part.getId());
-        if(ip!=null)part.setProducts(ip.getProducts());
+        } else {
+            // Check if inventory is within min and max bounds
+            if (part.getInv() < part.getMinInv()) {
+                theBindingResult.rejectValue("inv", "invalid.inventory", "Inventory is below the minimum.");
+                return "InhousePartForm";
+            }
+
+            if (part.getInv() > part.getMaxInv()) {
+                theBindingResult.rejectValue("inv", "invalid.inventory", "Inventory is above the maximum.");
+                return "InhousePartForm";
+            }
+
+            InhousePartService repo = context.getBean(InhousePartServiceImpl.class);
+            InhousePart ip = repo.findById((int) part.getId());
+            if (ip != null) {
+                part.setProducts(ip.getProducts());
+            }
             repo.save(part);
 
-        return "confirmationaddpart";}
+            return "confirmationaddpart";
+        }
     }
+
 
 }

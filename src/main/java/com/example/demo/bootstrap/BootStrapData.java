@@ -100,6 +100,13 @@ public class BootStrapData implements CommandLineRunner {
         Product awards = new Product("Awards", 5.0, 100);
         Product firstAide = new Product("First Aide", 20.0, 50);
 
+
+//        productRepository.save(uniforms);
+//        productRepository.save(fightingGear);
+//        productRepository.save(weapons);
+//        productRepository.save(awards);
+//        productRepository.save(firstAide);
+
         if (!productRepository.findByName("Uniform")) {
             productRepository.save(uniforms);
         }

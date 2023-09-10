@@ -4,6 +4,7 @@ import com.example.demo.validators.ValidDeletePart;
 
 import javax.persistence.*;
 import javax.validation.constraints.AssertTrue;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -31,7 +32,7 @@ public class Part implements Serializable {
     int inv;
     @Min(value = 0, message = "Inventory cannot be less ...")
     int minInv;
-    @Min(value = 0, message = "Inventory cannot exceed...")
+    @Max(value = 110, message = "Inventory cannot exceed...")
     int maxInv;
 
     @ManyToMany
